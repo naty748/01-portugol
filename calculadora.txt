@@ -1,0 +1,124 @@
+#Importando a biblioteca inteira do tkinter
+from tkinter import *
+from tkinter import ttk
+
+#color da calculadora
+cor_preta = '#2b2b2b'
+cor_laranja = '#fc9403'
+cor_azul = '#45668c'
+cor_cinza = '#d6d6d6'
+cor_branca = '#ffffff'
+
+#tela da calculadora
+tela =Tk()
+tela.title('Calculadora (Basica)')
+tela.geometry('300x423')
+tela.config(bg=cor_preta)
+
+#criando frames na tela da calculadora
+frame_tela = Frame(tela, width=400, height=65, bg=(cor_azul))
+frame_tela.grid(row=0, column=0)
+
+frame_corpo = Frame(tela, width=400, height=400, bg=(cor_branca))
+frame_corpo.grid(row=1, column=0)
+
+
+
+
+#variavel para todos os valores
+todos_valores = ''
+
+def calcular_valores(event):
+
+    global todos_valores
+
+    todos_valores = todos_valores + str(event)
+
+#passando o valor para a tela
+    valor_texto.set(todos_valores)
+
+
+#Função para calcular
+def calcular():
+    resultado = eval(todos_valores)
+    valor_texto.set(str(resultado))
+
+#função limpa tela
+def limpa_tela():
+    global todos_valores
+    todos_valores = ''
+    valor_texto.set('')
+
+
+valor_texto = StringVar()
+app_label = Label(frame_tela, textvariable=valor_texto, width=1, height=2, padx=140, relief=FLAT, font='Ivi 22', justify=RIGHT, bg=cor_azul, fg=cor_branca)
+app_label.place(x=0, y=0)
+
+
+
+
+
+#Criando butões no corpo da calculadora
+butao1 = Button(frame_corpo, command=limpa_tela, text='LIMPAR', width=16, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao1.place(x=0, y=0)
+
+butao2 = Button(frame_corpo, command= lambda: calcular_valores('%'),text='%', width=6, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao2.place(x=166, y=0)
+
+butao3 = Button(frame_corpo, command= lambda: calcular_valores('/'),text='/', width=6, height=3, bg=(cor_laranja),font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao3.place(x=235, y=0)
+
+#butoes de baixo 1
+
+butao4 = Button(frame_corpo, command= lambda: calcular_valores('7'),text='7', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao4.place(x=0, y=72)
+
+butao5 = Button(frame_corpo, command= lambda: calcular_valores('8'),text='8', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao5.place(x=80, y=72)
+
+butao6 = Button(frame_corpo, command= lambda: calcular_valores('9'),text='9', width=6, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao6.place(x=166, y=72)
+
+butao7 = Button(frame_corpo, command= lambda: calcular_valores('*'),text='*', width=6, height=3, bg=(cor_laranja),font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao7.place(x=235, y=72)
+
+#butoes de baixo 2
+
+butao8 = Button(frame_corpo, command= lambda: calcular_valores('4'),text='4', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao8.place(x=0, y=144)
+
+butao9 = Button(frame_corpo, command= lambda: calcular_valores('5'),text='5', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao9.place(x=80, y=144)
+
+butao10 = Button(frame_corpo, command= lambda: calcular_valores('6'),text='6', width=6, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao10.place(x=166, y=144)
+
+butao12 = Button(frame_corpo, command= lambda: calcular_valores('-'),text='-', width=6, height=3, bg=(cor_laranja),font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao12.place(x=235, y=144)
+
+#butoes de baixo 3
+
+butao13 = Button(frame_corpo, command= lambda: calcular_valores('1'),text='1', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao13.place(x=0, y=216)
+
+butao14 = Button(frame_corpo, command= lambda: calcular_valores('2'),text='2', width=8, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao14.place(x=80, y=216)
+
+butao15 = Button(frame_corpo, command= lambda: calcular_valores('3'),text='3', width=6, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao15.place(x=166, y=216)
+
+butao16 = Button(frame_corpo, command= lambda: calcular_valores('+'),text='+', width=6, height=3, bg=(cor_laranja),font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao16.place(x=235, y=216)
+
+#butoes de baixo 4
+
+butao17 = Button(frame_corpo, command= lambda: calcular_valores('0'),text='0', width=16, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao17.place(x=0, y=288)
+
+butao18 = Button(frame_corpo, command= lambda: calcular_valores('.'),text='.', width=6, height=3, bg=(cor_cinza), font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao18.place(x=166, y=288)
+
+butao19 = Button(frame_corpo, command= calcular,text='=', width=6, height=3, bg=(cor_laranja),font='Ivy 13 bold', relief=RAISED, overrelief=RIDGE)
+butao19.place(x=235, y=288)
+
+tela.mainloop()
